@@ -25,7 +25,7 @@
     "src/**/*.ts",
     "config",
     "server/**/*.ts",
-    ".eslintrc.js",
+    ".eslintrc.json",
     "webpack.config.cjs",
     "webpack.config.js"
   ],

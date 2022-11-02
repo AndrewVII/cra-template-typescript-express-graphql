@@ -6,13 +6,12 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import http from 'http';
 import { URL } from 'url';
-import { graphqlHTTP } from 'express-graphql';
 
 import { connectToDb, disconnectDb } from './db/conn';
-import {schema} from './schema/schema';
 
 const log = debug('tbg:routes:index');
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const __dirname = new URL('.', import.meta.url).pathname;
 
 // create connection to mongodb
@@ -31,13 +30,6 @@ app.use('/static', express.static('dist'));
 app.use('*/js', express.static('dist'));
 app.use('*/txt', express.static('dist'));
 
-
-// Setting up graphql
-app.use('/graphql', graphqlHTTP({
-  schema,
-  graphiql: true
-}))
-
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, 'dist/index.html')));
 
 const cleanUp = (signalType: string) => {
@@ -53,7 +45,7 @@ process
     // eslint-disable-next-line
     console.error(reason, 'Unhandled Rejection at Promise', p);
   })
-  .on('uncaughtException', err => {
+  .on('uncaughtException', (err) => {
     // eslint-disable-next-line
     console.error(err, 'Uncaught Exception thrown');
     process.exit(1);
