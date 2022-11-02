@@ -8,10 +8,19 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "apollo-server-express": "^3.10.4",
     "clean-webpack-plugin": "^4.0.0",
+    "compression": "^1.7.4",
     "copy-webpack-plugin": "^11.0.0",
+    "debug": "^4.3.4",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "fs": "^0.0.1-security",
+    "graphql": "^16.6.0",
     "html-webpack-plugin": "^5.5.0",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
@@ -22,10 +31,10 @@
     "webpack-node-externals": "^3.0.0"
   },
   "scripts": {
-    "dev": "run-p server client",
+    "dev": "run-p client server",
     "client": "NODE_ENV=development webpack-dev-server --config ./webpack.config.cjs --mode development --devtool inline-source-map --hot",
-    "server": "nodemon --experimental-modules --es-module-specifier-resolution=node ./index.js",
-    "start": "yarn run build && NODE_ENV=production DEBUG=tbg:* node --experimental-modules --es-module-specifier-resolution=node ./index.js",
+    "server": "nodemon",
+    "start": "yarn run build && NODE_ENV=production DEBUG=tbg:* node --experimental-modules --es-module-specifier-resolution=node ./server/index.ts",
     "build": "NODE_ENV=production webpack --config ./webpack.config.cjs --mode production",
     "lint": "./node_modules/.bin/eslint \"**/*.js\" --ignore-pattern node_modules/ --ignore-pattern dist/ --fix"
   },
@@ -53,6 +62,8 @@
     "@babel/preset-env": "^7.19.4",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@types/compression": "^1.7.2",
+    "@types/debug": "^4.1.7",
     "@typescript-eslint/eslint-plugin": ">=5.31.0",
     "@typescript-eslint/parser": ">=5.31.0",
     "eslint": "^8.2.0",
@@ -62,7 +73,9 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "ts-loader": "^9.4.1",
-    "typescript": "^4.8.4"
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0-dev.20221101"
   }
 }

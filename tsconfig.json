@@ -22,9 +22,12 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src",
+    "src/**/*.ts",
+    "config",
+    "server/**/*.ts",
     ".eslintrc.js",
     "webpack.config.cjs",
     "webpack.config.js"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

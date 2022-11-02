@@ -30,7 +30,7 @@ module.exports = (env, argv) => ({
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: { loader: 'ts-loader' },
+        use: { loader: 'babel-loader' },
       },
       {
         test: /\.css$/,
@@ -68,8 +68,7 @@ module.exports = (env, argv) => ({
     host: '0.0.0.0',
     historyApiFallback: true,
     proxy: {
-      '/api': 'http://localhost:8000',
-      '/socket.io': 'http://localhost:8000',
+      '/graphql': 'http://localhost:8000',
     },
   },
   plugins: [
