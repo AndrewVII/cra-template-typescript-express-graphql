@@ -6,8 +6,9 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import http from 'http';
 import { URL } from 'url';
-
-import { connectToDb, disconnectDb } from './db/conn';
+import { graphqlHTTP } from 'express-graphql';
+import schema from './schema';
+import { connectToDb, disconnectDb } from './conn';
 
 const log = debug('tbg:routes:index');
 
@@ -19,6 +20,12 @@ connectToDb();
 
 const app = express();
 const httpServer = http.createServer(app);
+
+// GraphQL setup
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true,
+}));
 
 app.enable('trust proxy');
 app.set('trust proxy', 1);

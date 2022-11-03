@@ -24,7 +24,7 @@
   "include": [
     "src/**/*.ts",
     "config",
-    "server/**/*.ts",
+    "src/server/**/*.ts",
     ".eslintrc.json",
     "webpack.config.cjs",
     "webpack.config.js"
